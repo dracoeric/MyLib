@@ -6,7 +6,7 @@
 /*   By: erli <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/15 09:33:20 by erli              #+#    #+#             */
-/*   Updated: 2018/11/29 10:21:26 by erli             ###   ########.fr       */
+/*   Updated: 2018/11/29 13:08:55 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static	int		test_format(t_format *format)
 
 static	void	get_flags(const char *format_str, t_format *format, int *i)
 {
-	while (char_in_str(format_str[*i], "mt#0+- "))
+	while (ft_char_in_str(format_str[*i], "mt#0+- "))
 	{
 		if (format_str[*i] == '#')
 			format->pound = 1;
@@ -75,7 +75,7 @@ static	int		ft_simple_atoi(t_format *format, const char *format_str,
 static	void	get_len_modifier(const char *format_str, t_format **format,
 					int *i)
 {
-	if (char_in_str(format_str[*i], LEGAL_MOD))
+	if (ft_char_in_str(format_str[*i], LEGAL_MOD))
 	{
 		(*format)->data_format_modifier[0] = format_str[*i];
 		if (format_str[*i] == format_str[*i + 1] && (format_str[*i] == 'h'
@@ -95,7 +95,7 @@ int				manage_format(const char *format_str, t_format **format, int *i,
 	int no_prec;
 
 	no_prec = 1;
-	while (char_in_str(format_str[*i], "#mt0123456789-+ *.jzlhL"))
+	while (ft_char_in_str(format_str[*i], "#mt0123456789-+ *.jzlhL"))
 	{
 		get_flags(format_str, *format, i);
 		len = ft_simple_atoi(*format, format_str, i, ap);
@@ -110,7 +110,7 @@ int				manage_format(const char *format_str, t_format **format, int *i,
 		get_flags(format_str, *format, i);
 		get_len_modifier(format_str, format, i);
 	}
-	if (char_in_str(format_str[*i], LEGAL_CONV))
+	if (ft_char_in_str(format_str[*i], LEGAL_CONV))
 		(*format)->conversion = format_str[(*i)++];
 	else
 		(*format)->conversion = (format_str[*i] == '\0' ? '\0'

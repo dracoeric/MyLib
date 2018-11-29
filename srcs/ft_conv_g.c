@@ -6,7 +6,7 @@
 /*   By: erli <erli@42.fr>                          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/26 11:28:08 by erli              #+#    #+#             */
-/*   Updated: 2018/11/29 11:56:46 by erli             ###   ########.fr       */
+/*   Updated: 2018/11/29 13:11:01 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,10 @@ static	int		find_expo(long double nb)
 static	void	add_width(t_liststr **list, int width)
 {
 	t_liststr	*bubble;
-	int		len;
-	int		offset;
-	int		i;
-	int		j;
+	int			len;
+	int			offset;
+	int			i;
+	int			j;
 
 	bubble = *list;
 	while (bubble->next != NULL)
@@ -65,9 +65,9 @@ static	void	add_width(t_liststr **list, int width)
 static	void	remove_zeros(t_liststr **list, char c, int width)
 {
 	t_liststr	*bubble;
-	int		len;
-	int		offset;
-	int		i;
+	int			len;
+	int			offset;
+	int			i;
 
 	if (list == NULL || *list == NULL)
 		return ;

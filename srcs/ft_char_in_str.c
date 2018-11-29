@@ -6,11 +6,11 @@
 /*   By: erli <erli@42.fr>                          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 09:34:21 by erli              #+#    #+#             */
-/*   Updated: 2018/11/29 09:34:28 by erli             ###   ########.fr       */
+/*   Updated: 2018/11/29 13:08:15 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		char_in_str(char c, char *str)
+int		ft_char_in_str(char c, char *str)
 {
 	if (str == 0 || c == '\0')
 		return (0);

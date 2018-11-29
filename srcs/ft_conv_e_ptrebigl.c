@@ -6,7 +6,7 @@
 /*   By: erli <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/15 09:29:36 by erli              #+#    #+#             */
-/*   Updated: 2018/11/29 11:44:37 by erli             ###   ########.fr       */
+/*   Updated: 2018/11/29 13:09:34 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,8 @@ static	int		add_list_tmp(t_liststr **list_tmp, t_liststr **list)
 	return (1);
 }
 
-int				ft_conv_e_ptrebigl(t_format *format, va_list ap, t_liststr **list)
+int				ft_conv_e_ptrebigl(t_format *format, va_list ap,
+					t_liststr **list)
 {
 	long double	*nb_tab;
 	int			len;

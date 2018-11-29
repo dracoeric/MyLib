@@ -1,22 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd.c                                        :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erli <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: erli <erli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/08 16:06:16 by erli              #+#    #+#             */
-/*   Updated: 2018/11/08 16:28:54 by erli             ###   ########.fr       */
+/*   Created: 2018/11/10 16:42:05 by erli              #+#    #+#             */
+/*   Updated: 2018/11/12 13:38:04 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-void	ft_lstadd(t_list **alist, t_list *new)
+# define BUFF_SIZE 40
+
+typedef	struct	s_bookmark
 {
-	if (new != NULL)
-	{
-		new->next = *alist;
-		*alist = new;
-	}
-}
+	int					file_descriptor;
+	char				*last_buf;
+	struct s_bookmark	*next;
+}				t_bookmark;
+
+int				get_next_line(const int fd, char **line);
+
+#endif

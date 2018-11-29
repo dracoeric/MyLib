@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_liststr_manip.c                                    :+:      :+:    :+:   */
+/*   ft_liststr_manip.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: erli <erli@42.fr>                          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 13:14:42 by erli              #+#    #+#             */
-/*   Updated: 2018/11/29 11:53:45 by erli             ###   ########.fr       */
+/*   Updated: 2018/11/29 13:11:46 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_liststr	*lststr_create(char **cont, int len)
 	return (new);
 }
 
-int		lststr_addback(t_liststr **list, char **cont, int len)
+int			lststr_addback(t_liststr **list, char **cont, int len)
 {
 	t_liststr *elem;
 	t_liststr *bubble;
@@ -54,7 +54,7 @@ int		lststr_addback(t_liststr **list, char **cont, int len)
 	return (1);
 }
 
-int		lststr_dellall(t_liststr **list)
+int			lststr_dellall(t_liststr **list)
 {
 	t_liststr *bubble;
 	t_liststr *prev;
@@ -76,7 +76,7 @@ int		lststr_dellall(t_liststr **list)
 	return (-1);
 }
 
-int		lststr_len(t_liststr *list)
+int			lststr_len(t_liststr *list)
 {
 	int len;
 
@@ -89,7 +89,7 @@ int		lststr_len(t_liststr *list)
 	return (len);
 }
 
-int		lststr_unload(t_liststr **list)
+int			lststr_unload(t_liststr **list)
 {
 	int			len;
 	char		*str;
