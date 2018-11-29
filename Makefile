@@ -6,20 +6,21 @@
 #    By: erli <marvin@42.fr>                        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/14 17:45:59 by erli              #+#    #+#              #
-#    Updated: 2018/11/29 13:51:56 by erli             ###   ########.fr        #
+#    Updated: 2018/11/29 15:02:03 by erli             ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
-NAME		=		libft.a
+NAME		=		libftprintf.a
 
 SRCSDIR		=		srcs
 
 OBJSDIR		=		objs
 
-SRCS		=		ft_atoi.c			ft_charatpos.c	ft_itoa.c				\
-					ft_char_in_str.c	get_next_line.c							\
+SRCS		=		ft_atoi.c			ft_charatpos.c		ft_itoa.c			\
+					ft_char_in_str.c	get_next_line.c		ft_tolower.c		\
+					ft_toupper.c												\
 					ft_isalpha.c		ft_isdigit.c		ft_isalnum.c		\
-					ft_isascii.c		ft_isdigit.c		ft_isprint.c		\
+					ft_isascii.c		ft_isprint.c		\
 																				\
 					ft_bzero.c			ft_memalloc.c		ft_memalloc_c.c		\
 					ft_memccpy.c		ft_memchr.c			ft_memcmp.c			\
@@ -41,7 +42,7 @@ SRCS		=		ft_atoi.c			ft_charatpos.c	ft_itoa.c				\
 					ft_strstr.c			ft_strsub.c			ft_strtrim.c		\
 																				\
 					ft_printf.c													\
-					ft_conv_c.c			ft_conv_c_matc.c	ft_conv_c_matc.c	\
+					ft_conv_c.c			ft_conv_c_matc.c	ft_conv_c_ptrc.c	\
 					ft_conv_d.c			ft_conv_d_matd.c	ft_conv_d_matdh.c	\
 					ft_conv_d_matdhh.c	ft_conv_d_matdl.c	ft_conv_d_matdll.c	\
 					ft_conv_d_ptrd.c	ft_conv_d_ptrdh.c	ft_conv_d_ptrdhh.c	\
@@ -83,8 +84,9 @@ $(OBJSDIR)/%.o			:		$(SRCSDIR)/%.c
 					@mkdir -p $(OBJSDIR)
 					$(CC) $(CFLAG) $(INCL) -c $< -o $@
 
-val			:		$(OBJS) includes/ft_printf.h
-					$(CC) -g $(CFLAG) $(INCL) -o  $(NAME) $(OBJS)
+val			:		$(OBJS) includes/libft.h includes/ft_con_tab.h		\
+					includes/get_next_line.h
+					$(CC) -g $(CFLAG) $(INCL) -o test $(OBJS) main.c -L.  -lft
 
 clean		:
 					$(RM) $(OBJS)

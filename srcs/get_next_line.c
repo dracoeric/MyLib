@@ -6,7 +6,7 @@
 /*   By: erli <erli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/10 16:43:47 by erli              #+#    #+#             */
-/*   Updated: 2018/11/29 13:52:19 by erli             ###   ########.fr       */
+/*   Updated: 2018/11/29 14:03:46 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-static	int			add_to_line(char **line, char *str_add, t_bookmark *bm, int f)
+static	int			add_to_line(char **line, char *str_add, t_bookmark *bm,
+						int f)
 {
 	char *old;
 
@@ -90,7 +91,8 @@ static	int			bm_free(t_bookmark **list, const int fd)
 	return (0);
 }
 
-static	int			read_line(const int fd, char **line, t_bookmark *bm, char *buf)
+static	int			read_line(const int fd, char **line, t_bookmark *bm,
+						char *buf)
 {
 	int		ret;
 	char	str_add[BUFF_SIZE + 1];

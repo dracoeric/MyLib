@@ -6,7 +6,7 @@
 /*   By: erli <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/14 11:08:07 by erli              #+#    #+#             */
-/*   Updated: 2018/11/29 13:46:27 by erli             ###   ########.fr       */
+/*   Updated: 2018/11/29 14:07:35 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ typedef struct	s_conv
 int				ft_atoi(const char *str);
 void			ft_charatpos(unsigned int i, char *str);
 int				ft_char_in_str(char c, char *str);
+int				ft_tolower(int c);
+int				ft_toupper(int c);
 char			*ft_itoa(int nb);
 
 int				ft_isalnum(int c);
@@ -61,7 +63,7 @@ int				ft_isdigit(int c);
 int				ft_isprint(int c);
 
 void			ft_bzero(void *s, size_t len);
-void			*ft_memalloc(size_t n, int c);
+void			*ft_memalloc(size_t n);
 void			*ft_memalloc_c(size_t n, int c);
 void			*ft_memccpy(void *dst, const void *src, int c, size_t n);
 void			*ft_memchr(const void *s, int c, size_t n);
@@ -122,42 +124,54 @@ int				ft_conv_d(t_format *format, va_list ap, t_liststr **list);
 int				ft_conv_d_ptr(t_format *format, va_list ap, t_liststr **list);
 int				ft_conv_d_ptrd(t_format *format, va_list ap, t_liststr **list);
 int				ft_conv_d_ptrdh(t_format *format, va_list ap, t_liststr **list);
-int				ft_conv_d_ptrdhh(t_format *format, va_list ap, t_liststr **list);
+int				ft_conv_d_ptrdhh(t_format *format, va_list ap,
+					t_liststr **list);
 int				ft_conv_d_ptrdl(t_format *format, va_list ap, t_liststr **list);
-int				ft_conv_d_ptrdll(t_format *format, va_list ap, t_liststr **list);
-int				ft_conv_o_ptroll(t_format *format, va_list ap, t_liststr **list);
+int				ft_conv_d_ptrdll(t_format *format, va_list ap,
+					t_liststr **list);
+int				ft_conv_o_ptroll(t_format *format, va_list ap,
+					t_liststr **list);
 int				ft_conv_o_ptrol(t_format *format, va_list ap, t_liststr **list);
-int				ft_conv_o_ptrohh(t_format *format, va_list ap, t_liststr **list);
+int				ft_conv_o_ptrohh(t_format *format, va_list ap,
+					t_liststr **list);
 int				ft_conv_o_ptroh(t_format *format, va_list ap, t_liststr **list);
 int				ft_conv_o_ptro(t_format *format, va_list ap, t_liststr **list);
 int				ft_conv_o_ptr(t_format *format, va_list ap, t_liststr **list);
 int				ft_conv_f_ptr(t_format *format, va_list ap, t_liststr **list);
 int				ft_conv_f_ptrfl(t_format *format, va_list ap, t_liststr **list);
-int				ft_conv_f_ptrfbigl(t_format *format, va_list ap, t_liststr **list);
+int				ft_conv_f_ptrfbigl(t_format *format, va_list ap,
+					t_liststr **list);
 int				ft_conv_e_ptr(t_format *format, va_list ap, t_liststr **list);
 int				ft_conv_e_ptrel(t_format *format, va_list ap, t_liststr **list);
-int				ft_conv_e_ptrebigl(t_format *format, va_list ap, t_liststr **list);
+int				ft_conv_e_ptrebigl(t_format *format, va_list ap,
+					t_liststr **list);
 int				ft_conv_g_ptr(t_format *format, va_list ap, t_liststr **list);
 int				ft_conv_g_ptrgl(t_format *format, va_list ap, t_liststr **list);
-int				ft_conv_g_ptrgbigl(t_format *format, va_list ap, t_liststr **list);
+int				ft_conv_g_ptrgbigl(t_format *format, va_list ap,
+					t_liststr **list);
 int				ft_conv_c_ptrc(t_format *format, va_list ap, t_liststr **list);
 int				ft_conv_s_ptrs(t_format *format, va_list ap, t_liststr **list);
 int				ft_conv_p_ptrp(t_format *format, va_list ap, t_liststr **list);
 int				ft_conv_d_mat(t_format *format, va_list ap, t_liststr **list);
 int				ft_conv_d_matd(t_format *format, va_list ap, t_liststr **list);
 int				ft_conv_d_matdh(t_format *format, va_list ap, t_liststr **list);
-int				ft_conv_d_matdhh(t_format *format, va_list ap, t_liststr **list);
+int				ft_conv_d_matdhh(t_format *format, va_list ap,
+					t_liststr **list);
 int				ft_conv_d_matdl(t_format *format, va_list ap, t_liststr **list);
-int				ft_conv_d_matdll(t_format *format, va_list ap, t_liststr **list);
+int				ft_conv_d_matdll(t_format *format, va_list ap,
+					t_liststr **list);
 int				ft_conv_o_mat(t_format *format, va_list ap, t_liststr **list);
 int				ft_conv_o_mato(t_format *format, va_list ap, t_liststr **list);
 int				ft_conv_o_matoh(t_format *format, va_list ap, t_liststr **list);
-int				ft_conv_o_matohh(t_format *format, va_list ap, t_liststr **list);
+int				ft_conv_o_matohh(t_format *format, va_list ap,
+					t_liststr **list);
 int				ft_conv_o_matol(t_format *format, va_list ap, t_liststr **list);
-int				ft_conv_o_matoll(t_format *format, va_list ap, t_liststr **list);
+int				ft_conv_o_matoll(t_format *format, va_list ap,
+					t_liststr **list);
 int				ft_conv_f_mat(t_format *format, va_list ap, t_liststr **list);
 int				ft_conv_f_matfl(t_format *format, va_list ap, t_liststr **list);
-int				ft_conv_f_matfbigl(t_format *format, va_list ap, t_liststr **list);
+int				ft_conv_f_matfbigl(t_format *format, va_list ap,
+					t_liststr **list);
 int				ft_conv_c_matc(t_format *format, va_list ap, t_liststr **list);
 int				ft_conv_s_mats(t_format *format, va_list ap, t_liststr **list);
 int				ft_conv_p_matp(t_format *format, va_list ap, t_liststr **list);
