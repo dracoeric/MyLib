@@ -6,11 +6,10 @@
 /*   By: erli <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/08 10:12:18 by erli              #+#    #+#             */
-/*   Updated: 2018/12/01 14:05:01 by erli             ###   ########.fr       */
+/*   Updated: 2018/12/01 14:10:27 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
 #include "libft.h"
 
 int	ft_char_at_pos(char c, char *str)
