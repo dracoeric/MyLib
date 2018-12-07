@@ -6,7 +6,7 @@
 /*   By: erli <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/14 11:08:07 by erli              #+#    #+#             */
-/*   Updated: 2018/12/05 14:31:12 by erli             ###   ########.fr       */
+/*   Updated: 2018/12/07 10:15:17 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ typedef struct	s_conv
 int				ft_atoi(const char *str);
 int				ft_char_at_pos(char c, char *str);
 int				ft_char_in_str(char c, char *str);
+int				ft_error_msg_int(char *msg, int ret);
+void			*ft_error_msg_ptr(char *msg, void *ptr);
 void			ft_free_mat_int(int **mat, int i);
 void			ft_free_mat_char(char **mat, int i);
 int				ft_tolower(int c);
