@@ -1,19 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_error_msg.c                                     :+:      :+:    :+:   */
+/*   ft_str_to_upper.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: erli <erli@42.fr>                          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/07 10:11:47 by erli              #+#    #+#             */
-/*   Updated: 2018/12/07 10:13:10 by erli             ###   ########.fr       */
+/*   Created: 2018/12/07 13:30:57 by erli              #+#    #+#             */
+/*   Updated: 2018/12/07 14:20:17 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_error_msg_int(char *msg, int ret)
+char	*ft_str_to_upper(char *str)
 {
-	ft_putstr(msg);
-	return (ret);
+	int i;
+
+	i = 0;
+	while(str[i] != '\0')
+	{
+		if (str[i] >= 'A' && str[i] <= 'Z')
+			str[i] -= 32;
+		i++;
+	}
+	return (str);
 }

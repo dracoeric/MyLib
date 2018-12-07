@@ -1,19 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_error_msg_ptr.c                                 :+:      :+:    :+:   */
+/*   ft_str_to_lower.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: erli <erli@42.fr>                          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/07 10:13:35 by erli              #+#    #+#             */
-/*   Updated: 2018/12/07 10:14:16 by erli             ###   ########.fr       */
+/*   Created: 2018/12/07 13:30:57 by erli              #+#    #+#             */
+/*   Updated: 2018/12/07 14:19:28 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_error_msg_ptr(char *msg, void *ptr)
+char	*ft_str_to_lower(char *str)
 {
-	ft_putstr(msg);
-	return (ptr);
+	int i;
+
+	i = 0;
+	while(str[i] != '\0')
+	{
+		if (str[i] >= 'A' && str[i] <= 'Z')
+			str[i] += 32;
+		i++;
+	}
+	return (str);
 }

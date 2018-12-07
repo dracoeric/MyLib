@@ -6,7 +6,7 @@
 /*   By: erli <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/14 11:08:07 by erli              #+#    #+#             */
-/*   Updated: 2018/12/07 11:40:37 by erli             ###   ########.fr       */
+/*   Updated: 2018/12/07 14:21:06 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,8 @@ char			*ft_strrchr(const char *str, int c);
 char			**ft_strsplit(const char *src, char c);
 char			*ft_strstr(const char *haysack, const char *needle);
 char			*ft_strsub(const char *str, unsigned int begin, size_t len);
+char			*ft_str_to_lower(char *str);
+char			*ft_str_to_upper(char *str);
 char			*ft_strtrim(const char *src);
 
 t_liststr		*lststr_create(char **cont, int len);

@@ -6,7 +6,7 @@
 #    By: erli <marvin@42.fr>                        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/14 17:45:59 by erli              #+#    #+#              #
-#    Updated: 2018/12/07 11:42:46 by erli             ###   ########.fr        #
+#    Updated: 2018/12/07 14:21:39 by erli             ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -40,7 +40,8 @@ SRCS		=		ft_atoi.c			ft_char_at_pos.c	ft_itoa.c			\
 					ft_strmapi.c		ft_strncat.c		ft_strncmp.c		\
 					ft_strncpy.c		ft_strnequ.c		ft_strnew.c			\
 					ft_strnstr.c		ft_strrchr.c		ft_strsplit.c		\
-					ft_strstr.c			ft_strsub.c			ft_strtrim.c		\
+					ft_strstr.c			ft_strsub.c			ft_str_to_lower.c	\
+					ft_str_to_upper.c	ft_strtrim.c							\
 																				\
 					ft_printf.c													\
 					ft_conv_c.c			ft_conv_c_matc.c	ft_conv_c_ptrc.c	\
