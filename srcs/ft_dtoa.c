@@ -6,7 +6,7 @@
 /*   By: erli <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/08 14:19:28 by erli              #+#    #+#             */
-/*   Updated: 2018/12/07 15:12:28 by erli             ###   ########.fr       */
+/*   Updated: 2018/12/07 17:11:25 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static	int		max_power(double nb, double *pow)
 	return (n_pow);
 }
 
-char			*ft_itoa(double nb)
+char			*ft_dtoa(double nb)
 {
 	double	pow;
 	int		i;
