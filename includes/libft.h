@@ -6,7 +6,7 @@
 /*   By: erli <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/14 11:08:07 by erli              #+#    #+#             */
-/*   Updated: 2018/12/07 14:21:06 by erli             ###   ########.fr       */
+/*   Updated: 2018/12/07 15:09:49 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ void			ft_free_mat_char(char **mat, int i);
 int				ft_tolower(int c);
 int				ft_toupper(int c);
 char			*ft_itoa(int nb);
+char			*ft_dtoa(double nb);
+char			*ft_ldtoa(long double nb);
 int				get_next_line(int fd, char **line);
 
 int				ft_isalnum(int c);
