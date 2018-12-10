@@ -6,7 +6,7 @@
 /*   By: erli <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/08 14:19:28 by erli              #+#    #+#             */
-/*   Updated: 2018/12/10 10:54:09 by erli             ###   ########.fr       */
+/*   Updated: 2018/12/10 14:09:32 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ char			*ft_ldtoa(long double nb, int precision)
 		pow /= 10;
 		i++;
 	}
+	nb *= 10;
 	fill_decimals(nb, str, i, precision);
 	return (str);
 }
