@@ -6,7 +6,7 @@
 /*   By: erli <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/08 14:19:28 by erli              #+#    #+#             */
-/*   Updated: 2018/12/10 14:09:32 by erli             ###   ########.fr       */
+/*   Updated: 2018/12/10 14:21:23 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,11 +80,10 @@ char			*ft_ldtoa(long double nb, int precision)
 	while (pow >= 1 || pow <= -1)
 	{
 		str[i] = (int)(nb / pow) + 48;
-		nb = (nb - (str[i] - 48)) / 10;
+		nb = (nb - (str[i] - 48) * pow);
 		pow /= 10;
 		i++;
 	}
-	nb *= 10;
 	fill_decimals(nb, str, i, precision);
 	return (str);
 }
