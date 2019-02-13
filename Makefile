@@ -6,7 +6,7 @@
 #    By: erli <marvin@42.fr>                        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/14 17:45:59 by erli              #+#    #+#              #
-#    Updated: 2019/01/21 13:33:24 by erli             ###   ########.fr        #
+#    Updated: 2019/02/13 17:35:21 by erli             ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -76,21 +76,23 @@ CFLAG		=		-Wall -Werror -Wextra
 
 INCL		=		-I includes/
 
+HEADER		=		includes/libft.h 			\
+					includes/ft_con_tab.h 		\
+					includes/get_next_line.h
+
 RM			=		rm -f
 
 
 all			:		$(NAME)
 
-$(NAME)		:		$(OBJS) includes/libft.h includes/ft_con_tab.h 		\
-					includes/get_next_line.h
+$(NAME)		:		$(OBJS) $(HEADER)
 					ar -rucs $(NAME) $(OBJS)
 
 $(OBJSDIR)/%.o			:		$(SRCSDIR)/%.c
 					@mkdir -p $(OBJSDIR)
 					$(CC) $(CFLAG) $(INCL) -c $< -o $@
 
-val			:		$(OBJS) includes/libft.h includes/ft_con_tab.h		\
-					includes/get_next_line.h
+val			:		$(OBJS) $(HEADER)
 					$(CC) -g $(CFLAG) $(INCL) -o test $(OBJS) main.c -L.  -lft
 
 clean		:
