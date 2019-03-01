@@ -6,7 +6,7 @@
 #    By: erli <marvin@42.fr>                        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/14 17:45:59 by erli              #+#    #+#              #
-#    Updated: 2019/02/27 15:26:21 by erli             ###   ########.fr        #
+#    Updated: 2019/03/01 09:39:03 by erli             ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -16,7 +16,7 @@ SRCSDIR		=		srcs
 
 OBJSDIR		=		objs
 
-SRCS		=		ft_double_exponent.c										\
+SRCS		=							ft_double_whole.c	ft_double_exponent.c\
 					ft_atoi.c			ft_char_at_pos.c	ft_itoa.c			\
 					ft_char_in_str.c	ft_free_mat_int.c	get_next_line.c		\
 					ft_tolower.c		ft_toupper.c		ft_free_mat_char.c	\
