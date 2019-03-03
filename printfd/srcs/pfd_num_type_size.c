@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   pfd_num_type_size.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: erli <erli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/10 16:42:05 by erli              #+#    #+#             */
-/*   Updated: 2019/03/03 11:40:30 by erli             ###   ########.fr       */
+/*   Created: 2019/02/25 17:49:59 by erli              #+#    #+#             */
+/*   Updated: 2019/02/27 11:27:06 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "ft_printfd.h"
 
-# define GNL_B_SIZE 4095
-
-typedef	struct	s_bookmark
+size_t		pfd_num_type_size(int flags)
 {
-	int					file_descriptor;
-	char				*last_buf;
-	struct s_bookmark	*next;
-}				t_bookmark;
-
-int				get_next_line(const int fd, char **line);
-
-#endif
+	if (flags & HH_MOD)
+		return (sizeof(char));
+	if (flags & H_MOD)
+		return (sizeof(short));
+	if (flags & L_MOD)
+		return (sizeof(long));
+	if (flags & LL_MOD)
+		return (sizeof(long long));
+	return (sizeof(int));
+}

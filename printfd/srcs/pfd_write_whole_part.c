@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   pfd_write_whole_part_silde.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: erli <erli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/10 16:42:05 by erli              #+#    #+#             */
-/*   Updated: 2019/03/03 11:40:30 by erli             ###   ########.fr       */
+/*   Created: 2019/03/01 16:47:42 by erli              #+#    #+#             */
+/*   Updated: 2019/03/01 17:44:59 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "ft_printfd.h"
+#include "libft.h"
 
-# define GNL_B_SIZE 4095
+/*
+** Print whole part. manage round up il E-conv and whole == 10.
+*/
 
-typedef	struct	s_bookmark
+int				pfd_write_whole_part(t_pfd_data *data, char *str,
+					unsigned long long whole, size_t i)
 {
-	int					file_descriptor;
-	char				*last_buf;
-	struct s_bookmark	*next;
-}				t_bookmark;
-
-int				get_next_line(const int fd, char **line);
-
-#endif
+	if (whole == 0)
+		str[i] = '0';
+	while (whole != 0)
+	{
+		str[i--] = whole % 10 + '0';
+		whole /= 10;
+	}
+	return (pfd_remove_trailing_zeros(data, str, ft_strlen(str)));
+}

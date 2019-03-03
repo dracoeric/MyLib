@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   pfd_conv_string.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: erli <erli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/10 16:42:05 by erli              #+#    #+#             */
-/*   Updated: 2019/03/03 11:40:30 by erli             ###   ########.fr       */
+/*   Created: 2019/03/01 18:28:02 by erli              #+#    #+#             */
+/*   Updated: 2019/03/03 10:40:44 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "ft_printfd.h"
+#include "libft.h"
 
-# define GNL_B_SIZE 4095
-
-typedef	struct	s_bookmark
+int			pfd_conv_string(t_pfd_data *data, va_list ap)
 {
-	int					file_descriptor;
-	char				*last_buf;
-	struct s_bookmark	*next;
-}				t_bookmark;
+	char	*str;
+	size_t	len;
 
-int				get_next_line(const int fd, char **line);
-
-#endif
+	str = va_arg(ap, char *);
+	if (str == NULL && data->tag->precision != 0)
+		return (pfd_add_width(data, "(null)", 6));
+	len = (data->tag->precision == -1 ? ft_strlen(str)
+		: (size_t)data->tag->precision);
+	return (pfd_add_width(data, str, len));
+}

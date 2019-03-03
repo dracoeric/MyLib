@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   pfd_no_conv.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: erli <erli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/10 16:42:05 by erli              #+#    #+#             */
-/*   Updated: 2019/03/03 11:40:30 by erli             ###   ########.fr       */
+/*   Created: 2019/02/25 13:57:13 by erli              #+#    #+#             */
+/*   Updated: 2019/02/27 09:20:44 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "ft_printfd.h"
 
-# define GNL_B_SIZE 4095
-
-typedef	struct	s_bookmark
+int	pfd_no_conv(t_pfd_data *data, va_list ap)
 {
-	int					file_descriptor;
-	char				*last_buf;
-	struct s_bookmark	*next;
-}				t_bookmark;
-
-int				get_next_line(const int fd, char **line);
-
-#endif
+	if (data == 0 || ap == 0)
+		return (-1);
+	if (data->tag->width > 0)
+		data->tag->width -= 1;
+	return (pfd_add_width(data, "", 0));
+}

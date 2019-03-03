@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   pfd_conv_ptr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: erli <erli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/10 16:42:05 by erli              #+#    #+#             */
-/*   Updated: 2019/03/03 11:40:30 by erli             ###   ########.fr       */
+/*   Created: 2019/03/01 18:35:47 by erli              #+#    #+#             */
+/*   Updated: 2019/03/01 18:44:37 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "ft_printfd.h"
 
-# define GNL_B_SIZE 4095
-
-typedef	struct	s_bookmark
+int			pfd_conv_ptr(t_pfd_data *data, va_list ap)
 {
-	int					file_descriptor;
-	char				*last_buf;
-	struct s_bookmark	*next;
-}				t_bookmark;
+	unsigned long	*nb;
+	void			*addr;
 
-int				get_next_line(const int fd, char **line);
-
-#endif
+	addr = va_arg(ap, void *);
+	if (addr == NULL)
+		return (pfd_add_width(data, "0x0", 3));
+	nb = (unsigned long *)addr;
+	data->tag->flags ^= P_CONV;
+	data->tag->flags |= X_CONV;
+	data->tag->flags |= L_MOD;
+	data->tag->flags |= POUND;
+	return (pfd_num_to_str(data, (unsigned long long)nb));
+}

@@ -6,7 +6,7 @@
 #    By: erli <marvin@42.fr>                        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/14 17:45:59 by erli              #+#    #+#              #
-#    Updated: 2019/03/01 09:39:03 by erli             ###   ########.fr        #
+#    Updated: 2019/03/03 11:26:24 by erli             ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -45,30 +45,7 @@ SRCS		=							ft_double_whole.c	ft_double_exponent.c\
 					ft_strncpy.c		ft_strnequ.c		ft_strnew.c			\
 					ft_strnstr.c		ft_strrchr.c		ft_strsplit.c		\
 					ft_strstr.c			ft_strsub.c			ft_str_to_lower.c	\
-					ft_str_to_upper.c	ft_strtrim.c							\
-																				\
-					ft_printf.c													\
-					ft_conv_c.c			ft_conv_c_matc.c	ft_conv_c_ptrc.c	\
-					ft_conv_d.c			ft_conv_d_matd.c	ft_conv_d_matdh.c	\
-					ft_conv_d_matdhh.c	ft_conv_d_matdl.c	ft_conv_d_matdll.c	\
-					ft_conv_d_ptrd.c	ft_conv_d_ptrdh.c	ft_conv_d_ptrdhh.c	\
-					ft_conv_d_ptrdl.c	ft_conv_d_ptrdll.c	ft_conv_e.c			\
-					ft_conv_big_e.c		ft_conv_e_ptrel.c	ft_conv_e_ptrebigl.c\
-					ft_conv_f.c			ft_conv_f_matfl.c	ft_conv_f_matfbigl.c\
-					ft_conv_f_ptrfl.c	ft_conv_f_ptrfbigl.c					\
-					ft_conv_g.c			ft_conv_g_ptrgl.c	ft_conv_g_ptrgbigl.c\
-					ft_conv_mat.c		ft_conv_not.c		ft_conv_o.c			\
-					ft_conv_o_mato.c	ft_conv_o_matoh.c	ft_conv_o_matohh.c	\
-					ft_conv_o_matol.c	ft_conv_o_matoll.c	ft_conv_o_ptro.c	\
-					ft_conv_o_ptroh.c	ft_conv_o_ptrohh.c	ft_conv_o_ptrol.c	\
-					ft_conv_o_ptroll.c	ft_conv_p.c			ft_conv_p_matp.c	\
-					ft_conv_p_ptrp.c	ft_conv_percent.c	ft_conv_s.c			\
-					ft_conv_s_mats.c	ft_conv_s_ptrs.c	ft_conv_tab.c		\
-					ft_conv_u.c			ft_conv_x.c			ft_conv_big_x.c		\
-					ft_free_format.c	ft_liststr_manip.c	ft_loophole.c		\
-					get_converter.c		init_format.c		manage_format.c		\
-					printf_util.c
-
+					ft_str_to_upper.c	ft_strtrim.c																				
 OBJS		=		$(addprefix $(OBJSDIR)/, $(SRCS:.c=.o))
 
 CC			=		gcc
@@ -78,7 +55,6 @@ CFLAG		=		-Wall -Werror -Wextra
 INCL		=		-I includes/
 
 HEADER		=		includes/libft.h 			\
-					includes/ft_con_tab.h 		\
 					includes/get_next_line.h
 
 RM			=		rm -f
@@ -87,11 +63,14 @@ GREEN			=		"\x1B[32m"
 
 DEFAULT			=		"\x1B[0m"
 
-all			:		$(NAME)
+all			:		$(NAME) printfd
 
 $(NAME)		:		$(OBJS) $(HEADER)
 					@echo "Compiling: " $(GREEN) $(NAME) $(DEFAULT)
 					ar -rucs $(NAME) $(OBJS)
+
+printfd		:
+					make -C printfd
 
 $(OBJSDIR)/%.o			:		$(SRCSDIR)/%.c
 					@mkdir -p $(OBJSDIR)
@@ -108,6 +87,7 @@ fclean		:		clean
 
 re			:
 					@make fclean
+					@make -C printfd fclean
 					@make all
 
 delsav		:
@@ -118,7 +98,8 @@ delsav		:
 
 reset		:
 					@make fclean
+					@make -C printfd reset
 					@make delsav
 					@rm -Rf objs/
 
-.PHONY		:		clean delsav re fclean reset
+.PHONY		:		clean delsav re fclean reset printfd

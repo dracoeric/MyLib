@@ -1,27 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: erli <erli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/10 16:42:05 by erli              #+#    #+#             */
-/*   Updated: 2019/03/03 11:40:30 by erli             ###   ########.fr       */
+/*   Created: 2019/02/22 14:21:45 by erli              #+#    #+#             */
+/*   Updated: 2019/03/01 18:49:07 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "ft_printfd.h"
+#include <stdio.h>
+#include "libft.h"
+#include <stdlib.h>
+#include <unistd.h>
+#include <math.h>
 
-# define GNL_B_SIZE 4095
-
-typedef	struct	s_bookmark
+int			main(void)
 {
-	int					file_descriptor;
-	char				*last_buf;
-	struct s_bookmark	*next;
-}				t_bookmark;
+	int					ret;
+	int					ret1;
+	char				*str;
+	char				*c;
 
-int				get_next_line(const int fd, char **line);
-
-#endif
+	c = 0;
+	str = "%#+ 10p\n";
+	ret = printf(str, c);
+	ret1 = ft_printfd(1, str, c);
+	if (ret != ret1)
+		ft_printf("difference: ret = %d, retfd = %d\n", ret, ret1);
+	return (0);
+}

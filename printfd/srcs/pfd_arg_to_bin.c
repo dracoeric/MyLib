@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   pfd_arg_to_bin.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: erli <erli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/10 16:42:05 by erli              #+#    #+#             */
-/*   Updated: 2019/03/03 11:40:30 by erli             ###   ########.fr       */
+/*   Created: 2019/02/26 12:01:42 by erli              #+#    #+#             */
+/*   Updated: 2019/02/26 12:03:20 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "ft_printfd.h"
 
-# define GNL_B_SIZE 4095
+/*
+** Read memory zone the right amout of byte by reading data->tag, then writes
+** it's content in binary in buf
+*/
 
-typedef	struct	s_bookmark
+int				pfd_arg_to_bin(t_pfd_data *data, void *ptr)
 {
-	int					file_descriptor;
-	char				*last_buf;
-	struct s_bookmark	*next;
-}				t_bookmark;
-
-int				get_next_line(const int fd, char **line);
-
-#endif
+	if (data == 0 || ptr == 0)
+		return (-1);
+	return (0);
+}

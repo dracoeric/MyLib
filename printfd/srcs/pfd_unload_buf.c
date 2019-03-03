@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   pfd_unload_buf.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: erli <erli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/10 16:42:05 by erli              #+#    #+#             */
-/*   Updated: 2019/03/03 11:40:30 by erli             ###   ########.fr       */
+/*   Created: 2019/02/22 17:43:47 by erli              #+#    #+#             */
+/*   Updated: 2019/02/26 17:31:36 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "ft_printfd.h"
+#include "libft.h"
+#include <unistd.h>
 
-# define GNL_B_SIZE 4095
+/*
+** Unloads the content of buf in data->fd, returns -1 if error on write.
+** Reset cursor.q
+*/
 
-typedef	struct	s_bookmark
+int			pfd_unload_buf(t_pfd_data *data)
 {
-	int					file_descriptor;
-	char				*last_buf;
-	struct s_bookmark	*next;
-}				t_bookmark;
-
-int				get_next_line(const int fd, char **line);
-
-#endif
+	if (write(data->fd, data->buf, data->cursor) < 0)
+		return (-1);
+	data->ret += data->cursor;
+	ft_bzero(data->buf, PRINT_B_SIZE + 1);
+	data->cursor = 0;
+	return (data->ret);
+}
