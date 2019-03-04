@@ -6,7 +6,7 @@
 /*   By: erli <erli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 18:35:47 by erli              #+#    #+#             */
-/*   Updated: 2019/03/04 18:18:36 by erli             ###   ########.fr       */
+/*   Updated: 2019/03/04 18:29:53 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,12 +95,9 @@ static	int	pfd_conv_ptr_mat(t_pfd_data *data, void ***ptr)
 
 int			pfd_conv_ptr(t_pfd_data *data, va_list ap)
 {
-	void			*addr;
-
 	if (data->tag->flags & T_MOD)
 		return (pfd_conv_ptr_ptr(data, va_arg(ap, void **)));
 	if (data->tag->flags & M_MOD)
 		return (pfd_conv_ptr_mat(data, va_arg(ap, void ***)));
-	addr = va_arg(ap, void *);
 	return (pfd_ptr_to_str(data, va_arg(ap, void *)));
 }
