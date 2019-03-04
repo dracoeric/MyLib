@@ -6,7 +6,7 @@
 /*   By: erli <erli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 16:52:16 by erli              #+#    #+#             */
-/*   Updated: 2019/03/01 17:50:54 by erli             ###   ########.fr       */
+/*   Updated: 2019/03/04 13:37:40 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static	int	pfd_manage_pound_ox(t_pfd_data *data, char **str, size_t *len)
 
 	if ((size_t)data->tag->width <= *len || data->tag->flags & MINUS)
 		return (pfd_add_str(data, *str, *len));
-	if (data->tag->flags & (7 << 17) && data->tag->flags & 3)
+	if (data->tag->flags & (7 << 17) && (data->tag->flags & 3) == 3)
 	{
 		nb_char = (data->tag->flags & O_CONV ? 1 : 2);
 		if (pfd_add_str(data, *str, nb_char) < 0)
@@ -26,6 +26,15 @@ static	int	pfd_manage_pound_ox(t_pfd_data *data, char **str, size_t *len)
 		*str = (*str) + nb_char;
 		*len -= nb_char;
 		data->tag->width -= nb_char;
+	}
+	else if (*str != 0 && ((*str)[0] == '-' || (*str)[0] == '+'
+		|| (*str)[0] == ' ') && data->tag->flags & ZERO)
+	{
+		if (pfd_add_str(data, *str, 1) < 0)
+			return (-1);
+		*str = (*str) + 1;
+		*len -= 1;
+		data->tag->width -= 1;
 	}
 	return (1);
 }
@@ -44,7 +53,9 @@ int			pfd_add_width(t_pfd_data *data, char *str, size_t len)
 		? (size_t)data->tag->width - len : 0);
 	while (ret > 0 && i < nb_space)
 	{
-		if (data->tag->precision == -1 && data->tag->flags & ZERO)
+		if ((data->tag->precision == -1 && data->tag->flags & ZERO)
+			|| (data->tag->precision <= 0 && data->tag->flags & ZERO
+			&& data->tag->flags & (15 << 23)))
 			ret = pfd_add_char(data, '0');
 		else
 			ret = pfd_add_char(data, ' ');
