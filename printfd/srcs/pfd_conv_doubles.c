@@ -6,7 +6,7 @@
 /*   By: erli <erli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/25 13:52:47 by erli              #+#    #+#             */
-/*   Updated: 2019/03/01 17:47:45 by erli             ###   ########.fr       */
+/*   Updated: 2019/03/04 13:43:58 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static	int		pfd_conv_double_ptr(t_pfd_data *data, char *ptr)
 			*(long double *)(&(ptr[i * type_size]))) < 0)
 			return (-1);
 		if (i + 1 < (size_t)data->tag->nb_col)
-			pfd_add_str(data, ", ", 2);
+			pfd_add_str(data, ", ", 0, 2);
 		i += 1;
 	}
 	pfd_add_char(data, '}');
@@ -45,7 +45,7 @@ static	int		pfd_conv_double_mat(t_pfd_data *data, char **ptr)
 		if (pfd_conv_double_ptr(data, ptr[i]) < 0)
 			return (-1);
 		if (i + 1 < (size_t)data->tag->nb_line)
-			pfd_add_str(data, ",\n", 2);
+			pfd_add_str(data, ",\n", 0, 2);
 		i += 1;
 	}
 	pfd_add_char(data, '}');

@@ -6,7 +6,7 @@
 #    By: erli <marvin@42.fr>                        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/14 17:45:59 by erli              #+#    #+#              #
-#    Updated: 2019/03/03 11:26:24 by erli             ###   ########.fr        #
+#    Updated: 2019/03/04 14:32:16 by erli             ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -69,21 +69,28 @@ $(NAME)		:		$(OBJS) $(HEADER)
 					@echo "Compiling: " $(GREEN) $(NAME) $(DEFAULT)
 					ar -rucs $(NAME) $(OBJS)
 
-printfd		:
+printfd		:		
 					make -C printfd
 
 $(OBJSDIR)/%.o			:		$(SRCSDIR)/%.c
 					@mkdir -p $(OBJSDIR)
 					$(CC) $(CFLAG) $(INCL) -c $< -o $@
 
-val			:		$(OBJS) $(HEADER)
-					$(CC) -g $(CFLAG) $(INCL) -o test $(OBJS) main.c -L.  -lft
+norm		:		delsav
+					@echo "==== Norme" $(GREEN) "libft/srcs" $(DEFAULT) "===="
+					norminette $(SRCSDIR)
+					@echo "==== Norme" $(GREEN) "libft/includes" $(DEFAULT) "===="
+					norminette includes
+					@echo "==== Norme" $(GREEN) "libft/printfd" $(DEFAULT) "===="
+					make -C printfd norm
 
 clean		:
 					@$(RM) $(OBJS)
+					@make -C printfd clean
 
 fclean		:		clean
 					@$(RM) $(NAME)
+					@make -C printfd fclean
 
 re			:
 					@make fclean

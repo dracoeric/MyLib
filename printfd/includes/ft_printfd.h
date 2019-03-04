@@ -6,7 +6,7 @@
 /*   By: erli <erli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 14:27:46 by erli              #+#    #+#             */
-/*   Updated: 2019/03/04 10:25:01 by erli             ###   ########.fr       */
+/*   Updated: 2019/03/04 14:06:48 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <stdarg.h>
 # include <stdlib.h>
 
-# define PRINT_B_SIZE 2043
+# define PRINT_B_SIZE 63
 # define LONG_LONG_SIZE 8
 # define LL_LAST_BIT (8 * LONG_LONG_SIZE - 1)
 # define LD_SIZE 10
@@ -91,7 +91,8 @@ typedef	int			(*t_pfd_conv)(t_pfd_data *, va_list);
 int					ft_printfd(int fd, char *format, ...);
 int					ft_printf(const char *format, ...);
 int					pfd_add_char(t_pfd_data *data, char c);
-int					pfd_add_str(t_pfd_data *data, char *str, size_t len);
+int					pfd_add_str(t_pfd_data *data, char *str, size_t start,
+						size_t len);
 int					pfd_unload_buf(t_pfd_data *data);
 int					pfd_manage_tag(t_pfd_data *data, char *format,
 						va_list ap, size_t *i);

@@ -6,11 +6,11 @@
 #    By: erli <erli@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/22 12:53:22 by erli              #+#    #+#              #
-#    Updated: 2019/03/04 09:42:26 by erli             ###   ########.fr        #
+#    Updated: 2019/03/04 14:31:41 by erli             ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
-NAME			=		../libftprintf.a
+NAME			=		../libft.a
 
 SRCSDIR			=		srcs
 
@@ -30,7 +30,7 @@ SRCS			=		main_printfd.c			main_printf.c		pfd_add_str.c	\
 						pfd_conv_ptr.c												\
 						pfd_conv_unsigned_decimals.c	pfd_conv_signed_decimals.c	\
 																					\
-						pfd_print_data.c		main.c	
+						pfd_print_data.c
 
 OBJS			=		$(addprefix $(OBJSDIR)/, $(SRCS:.c=.o))
 
@@ -63,10 +63,9 @@ $(OBJSDIR)/%.o	:		$(SRCSDIR)/%.c $(HEADER)
 						$(CC) -c $(CFLAGS) $(INCL) $< -o $@
 
 norm			:		delsav
-						make -C libft delsav
-						@echo "==== Norme"  $(GREEN) $(SRCSDIR) $(DEFAULT) "===="
+						@echo "==== Norme"  $(GREEN) "printfd/srcs" $(DEFAULT) "===="
 						norminette $(SRCSDIR) 
-						@echo "==== Norme"  $(GREEN) "includes/" $(DEFAULT) "===="
+						@echo "==== Norme" $(GREEN) "printfd/includes/" $(DEFAULT) "===="
 						norminette includes/
 
 delsav			:
@@ -88,4 +87,4 @@ reset			:		delsav
 						@make fclean
 						rm -Rf $(OBJSDIR)
 
-.PHONY			:		delsav clean fclean re reset $(NAME)
+.PHONY			:		delsav clean fclean re reset
