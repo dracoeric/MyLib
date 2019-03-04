@@ -6,7 +6,7 @@
 /*   By: erli <erli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 14:27:46 by erli              #+#    #+#             */
-/*   Updated: 2019/03/04 14:06:48 by erli             ###   ########.fr       */
+/*   Updated: 2019/03/04 18:20:54 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # define LONG_LONG_SIZE 8
 # define LL_LAST_BIT (8 * LONG_LONG_SIZE - 1)
 # define LD_SIZE 10
+# define D_SIZE 8
 # define LD_NB_EXP_BIT 15
 # define LD_BIAS ((1 << (LD_NB_EXP_BIT - 1)) - 1)
 
