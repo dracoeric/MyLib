@@ -6,11 +6,11 @@
 /*   By: erli <erli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 16:30:07 by erli              #+#    #+#             */
-/*   Updated: 2019/02/27 09:57:42 by erli             ###   ########.fr       */
+/*   Updated: 2019/10/18 16:50:14 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printfd.h"
+#include "ft_printf.h"
 #include "libft.h"
 
 static	int		pfd_write_num(t_pfd_data *data, char *str,

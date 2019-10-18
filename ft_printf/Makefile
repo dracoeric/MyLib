@@ -6,7 +6,7 @@
 #    By: erli <erli@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/22 12:53:22 by erli              #+#    #+#              #
-#    Updated: 2019/10/18 16:32:15 by erli             ###   ########.fr        #
+#    Updated: 2019/10/18 16:43:06 by erli             ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -16,7 +16,7 @@ SRCSDIR			=		srcs
 
 OBJSDIR			=		objs
 
-SRCS			=		main_printfd.c			main_printf.c		pfd_add_str.c	\
+SRCS			=		main_dprintf.c			main_printf.c		pfd_add_str.c	\
 						pfd_add_char.c			pfd_manage_tag.c	pfd_read_tag.c	\
 						pfd_convert.c			pfd_conv_doubles.c	pfd_unload_buf.c\
 																					\
@@ -34,7 +34,7 @@ SRCS			=		main_printfd.c			main_printf.c		pfd_add_str.c	\
 
 OBJS			=		$(addprefix $(OBJSDIR)/, $(SRCS:.c=.o))
 
-HEADER			=		includes/ft_printfd.h ../includes
+HEADER			=		includes/ft_printf.h ../includes
 
 CC				=		gcc -g
 
@@ -63,9 +63,9 @@ $(OBJSDIR)/%.o	:		$(SRCSDIR)/%.c $(HEADER)
 						$(CC) -c $(CFLAGS) $(INCL) $< -o $@
 
 norm			:		delsav
-						@echo "==== Norme"  $(GREEN) "printfd/srcs" $(DEFAULT) "===="
+						@echo "==== Norme"  $(GREEN) "ft_printf/srcs" $(DEFAULT) "===="
 						norminette $(SRCSDIR) 
-						@echo "==== Norme" $(GREEN) "printfd/includes/" $(DEFAULT) "===="
+						@echo "==== Norme" $(GREEN) "ft_printf/includes/" $(DEFAULT) "===="
 						norminette includes/
 
 delsav			:
