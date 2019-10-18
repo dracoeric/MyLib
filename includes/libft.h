@@ -6,7 +6,7 @@
 /*   By: erli <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/14 11:08:07 by erli              #+#    #+#             */
-/*   Updated: 2019/03/03 11:12:07 by erli             ###   ########.fr       */
+/*   Updated: 2019/10/18 16:33:37 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int					ft_toupper(int c);
 
 int					get_next_line(int fd, char **line);
 int					ft_printf(const char *format, ...);
-int					ft_printfd(int fd, char *format, ...);
+int					ft_dprintf(int fd, char *format, ...);
 
 int					ft_msg_int(int fd, char *msg, int ret);
 void				*ft_msg_ptr(int fd, char *msg, void *ptr);
