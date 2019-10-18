@@ -6,11 +6,11 @@
 /*   By: erli <erli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 17:16:17 by erli              #+#    #+#             */
-/*   Updated: 2019/03/01 17:57:52 by erli             ###   ########.fr       */
+/*   Updated: 2019/10/18 16:49:37 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printfd.h"
+#include "ft_printf.h"
 #include "libft.h"
 
 int				pfd_remove_trailing_zeros(t_pfd_data *data, char *str,

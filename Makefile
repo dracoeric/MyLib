@@ -6,7 +6,7 @@
 #    By: erli <marvin@42.fr>                        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/14 17:45:59 by erli              #+#    #+#              #
-#    Updated: 2019/10/18 16:32:02 by erli             ###   ########.fr        #
+#    Updated: 2019/10/18 16:52:32 by erli             ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -63,14 +63,14 @@ GREEN			=		"\x1B[32m"
 
 DEFAULT			=		"\x1B[0m"
 
-all			:		$(NAME) printfd
+all			:		$(NAME) printf
 
 $(NAME)		:		$(OBJS) $(HEADER)
 					@echo "Compiling: " $(GREEN) $(NAME) $(DEFAULT)
 					ar -rucs $(NAME) $(OBJS)
 
-printfd		:		
-					make -C printfd
+printf		:		
+					make -C ft_printf
 
 $(OBJSDIR)/%.o			:		$(SRCSDIR)/%.c
 					@mkdir -p $(OBJSDIR)
@@ -81,20 +81,20 @@ norm		:		delsav
 					norminette $(SRCSDIR)
 					@echo "==== Norme" $(GREEN) "libft/includes" $(DEFAULT) "===="
 					norminette includes
-					@echo "==== Norme" $(GREEN) "libft/printfd" $(DEFAULT) "===="
-					make -C printfd norm
+					@echo "==== Norme" $(GREEN) "libft/ft_printf" $(DEFAULT) "===="
+					make -C ft_printf norm
 
 clean		:
 					@$(RM) $(OBJS)
-					@make -C printfd clean
+					@make -C ft_printf clean
 
 fclean		:		clean
 					@$(RM) $(NAME)
-					@make -C printfd fclean
+					@make -C ft_printf fclean
 
 re			:
 					@make fclean
-					@make -C printfd fclean
+					@make -C ft_printf fclean
 					@make all
 
 delsav		:
@@ -105,7 +105,7 @@ delsav		:
 
 reset		:
 					@make fclean
-					@make -C printfd reset
+					@make -C ft_printf reset
 					@make delsav
 					@rm -Rf objs/
 

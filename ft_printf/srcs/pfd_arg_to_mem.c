@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pfd_arg_to_bin.c                                   :+:      :+:    :+:   */
+/*   pfd_arg_to_mem.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: erli <erli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 12:00:35 by erli              #+#    #+#             */
-/*   Updated: 2019/03/04 17:58:02 by erli             ###   ########.fr       */
+/*   Updated: 2019/10/18 16:46:38 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printfd.h"
+#include "ft_printf.h"
 #include "libft.h"
 
 /*
@@ -18,13 +18,12 @@
 ** in buf.
 */
 
-static	int	pfd_write_bin(t_pfd_data *data, void *arg, size_t nb_bytes,
+static	int	pfd_write_mem(t_pfd_data *data, void *arg, size_t nb_bytes,
 				size_t len)
 {
 	char			str[len + 1];
 	size_t			i;
 	size_t			j;
-	int				k;
 	unsigned char	*ptr;
 
 	i = 0;
@@ -33,12 +32,14 @@ static	int	pfd_write_bin(t_pfd_data *data, void *arg, size_t nb_bytes,
 	ptr = (unsigned char *)arg;
 	while (i < nb_bytes)
 	{
-		k = 0;
-		while (k < 8)
-		{
-			str[j++] = ((ptr[i] & (1 << (7 - k))) ? '1' : '0');
-			k++;
-		}
+		if (ptr[i] / 16 >= 10)
+			str[j++] = ptr[i] / 16 - 10 + 'a';
+		else
+			str[j++] = ptr[i] / 16 + '0';
+		if (ptr[i] % 16 >= 10)
+			str[j++] = ptr[i] % 16 - 10 + 'a';
+		else
+			str[j++] = ptr[i] % 16 + '0';
 		i++;
 		if (i < nb_bytes)
 			str[j++] = ' ';
@@ -46,7 +47,7 @@ static	int	pfd_write_bin(t_pfd_data *data, void *arg, size_t nb_bytes,
 	return (pfd_add_width(data, str, len));
 }
 
-int			pfd_arg_to_bin(t_pfd_data *data, void *ptr)
+int			pfd_arg_to_mem(t_pfd_data *data, void *ptr)
 {
 	size_t	nb_bytes;
 	size_t	total_len;
@@ -62,8 +63,8 @@ int			pfd_arg_to_bin(t_pfd_data *data, void *ptr)
 		nb_bytes = sizeof(void *);
 	else
 		nb_bytes = 1;
-	total_len = (9 * nb_bytes) - 1;
+	total_len = (3 * nb_bytes) - 1;
 	if (ptr == NULL)
 		return (pfd_add_width(data, "(null)", 6));
-	return (pfd_write_bin(data, ptr, nb_bytes, total_len));
+	return (pfd_write_mem(data, ptr, nb_bytes, total_len));
 }

@@ -6,11 +6,11 @@
 /*   By: erli <erli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 17:34:02 by erli              #+#    #+#             */
-/*   Updated: 2019/03/04 10:05:00 by erli             ###   ########.fr       */
+/*   Updated: 2019/10/18 16:46:04 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printfd.h"
+#include "ft_printf.h"
 
 /*
 ** Write a char in the buffer, if buffer is full, unloads it and bzeros it.

@@ -6,24 +6,14 @@
 /*   By: erli <erli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 14:22:53 by erli              #+#    #+#             */
-/*   Updated: 2019/10/18 16:36:07 by erli             ###   ########.fr       */
+/*   Updated: 2019/10/18 16:44:03 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printfd.h"
+#include "ft_printf.h"
 #include "libft.h"
-#include <unistd.h>
 
-static	int	pfd_init_data(t_pfd_data *data, int fd)
-{
-	if (write(fd, "", 0) < 0)
-		return (ft_msg_int(2, "ft_printfd: could not write in fd.\n", -1));
-	ft_bzero(data, sizeof(t_pfd_data));
-	data->fd = fd;
-	return (1);
-}
-
-int			ft_dprintf(int fd, char *format, ...)
+int			ft_printf(const char *format, ...)
 {
 	t_pfd_data	data[1];
 	size_t		i;
@@ -33,17 +23,19 @@ int			ft_dprintf(int fd, char *format, ...)
 
 	if (format == NULL)
 		return (ft_msg_int(2, "ft_printfd: Null format string.\n", -1));
-	ret = pfd_init_data(data, fd);
+	ft_bzero(data, sizeof(t_pfd_data));
+	data->fd = 1;
 	i = 0;
 	va_start(ap, format);
+	ret = 1;
 	while (format[i] != '\0' && ret > 0)
 	{
 		start = i;
 		while (format[i] != '%' && format[i] != '\0' && ret > 0)
 			i++;
-		ret = pfd_add_str(data, format, start, i - start);
+		ret = pfd_add_str(data, (char *)format, start, i - start);
 		if (ret > 0 && format[i] == '%')
-			ret = pfd_manage_tag(data, format, ap, &i);
+			ret = pfd_manage_tag(data, (char *)format, ap, &i);
 	}
 	va_end(ap);
 	return (ret > 0 ? pfd_unload_buf(data) : ret);

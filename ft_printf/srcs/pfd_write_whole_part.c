@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pfd_unload_buf.c                                   :+:      :+:    :+:   */
+/*   pfd_write_whole_part_silde.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: erli <erli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/22 17:43:47 by erli              #+#    #+#             */
-/*   Updated: 2019/02/26 17:31:36 by erli             ###   ########.fr       */
+/*   Created: 2019/03/01 16:47:42 by erli              #+#    #+#             */
+/*   Updated: 2019/10/18 16:50:25 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printfd.h"
+#include "ft_printf.h"
 #include "libft.h"
-#include <unistd.h>
 
 /*
-** Unloads the content of buf in data->fd, returns -1 if error on write.
-** Reset cursor.q
+** Print whole part. manage round up il E-conv and whole == 10.
 */
 
-int			pfd_unload_buf(t_pfd_data *data)
+int				pfd_write_whole_part(t_pfd_data *data, char *str,
+					unsigned long long whole, size_t i)
 {
-	if (write(data->fd, data->buf, data->cursor) < 0)
-		return (-1);
-	data->ret += data->cursor;
-	ft_bzero(data->buf, PRINT_B_SIZE + 1);
-	data->cursor = 0;
-	return (data->ret);
+	if (whole == 0)
+		str[i] = '0';
+	while (whole != 0)
+	{
+		str[i--] = whole % 10 + '0';
+		whole /= 10;
+	}
+	return (pfd_remove_trailing_zeros(data, str, ft_strlen(str)));
 }
