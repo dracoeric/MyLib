@@ -6,7 +6,7 @@
 /*   By: erli <erli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 14:22:53 by erli              #+#    #+#             */
-/*   Updated: 2019/03/04 13:47:06 by erli             ###   ########.fr       */
+/*   Updated: 2019/10/18 16:36:07 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static	int	pfd_init_data(t_pfd_data *data, int fd)
 	return (1);
 }
 
-int			ft_printfd(int fd, char *format, ...)
+int			ft_dprintf(int fd, char *format, ...)
 {
 	t_pfd_data	data[1];
 	size_t		i;

@@ -6,7 +6,7 @@
 /*   By: erli <erli@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 14:27:46 by erli              #+#    #+#             */
-/*   Updated: 2019/03/04 18:20:54 by erli             ###   ########.fr       */
+/*   Updated: 2019/10/18 16:34:36 by erli             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ typedef struct		s_pfd_data
 
 typedef	int			(*t_pfd_conv)(t_pfd_data *, va_list);
 
-int					ft_printfd(int fd, char *format, ...);
+int					ft_dprintf(int fd, char *format, ...);
 int					ft_printf(const char *format, ...);
 int					pfd_add_char(t_pfd_data *data, char c);
 int					pfd_add_str(t_pfd_data *data, char *str, size_t start,
